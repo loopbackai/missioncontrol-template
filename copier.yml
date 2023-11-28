@@ -18,3 +18,8 @@ author_email:
   type: str
   default: tony@stark.com
   help: What is your email?
+
+openai_api_key:
+  type: str
+  default: null
+  help: What is your OpenAI key? (Optional needed only for local testing)
