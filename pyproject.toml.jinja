@@ -18,8 +18,8 @@ dev = [
 ]
 
 [tool.pdm.scripts]
-dev.cmd = "python -m missioncontrolbot.cli {{project_name}}:actions"
-dev.env_file = ".env"
+start.cmd = "python -m missioncontrolbot.cli {{project_name}}:actions"
+start.env_file = ".env"
 
 test.cmd = "pytest"
 test.env_file = ".env"

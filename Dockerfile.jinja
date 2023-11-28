@@ -17,11 +17,12 @@ RUN pdm sync --prod --no-editable
 # run stage
 FROM python:3.11-slim
 
-ENV PROJECT_ENTRYPOINT={{project_name}}:actions
+RUN pip install pdm
 
 WORKDIR /project
 
 # retrieve packages from build stage
 COPY --from=builder /project/.venv /project/.venv
+COPY pyproject.toml /project/
 
-ENTRYPOINT ./.venv/bin/python -m missioncontrolbot.cli $PROJECT_ENTRYPOINT
+ENTRYPOINT pdm start

@@ -21,5 +21,5 @@ author_email:
 
 openai_api_key:
   type: str
-  default: null
+  default: ""
   help: What is your OpenAI key? (Optional needed only for local testing)
