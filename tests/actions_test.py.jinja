@@ -1,0 +1,7 @@
+from {{project_name}}.actions import add_user_to_newsletter
+
+def test_add_user_to_newsletter():
+    """
+    Test add_user_to_newsletter.
+    """
+    assert "demo@example.com" in add_user_to_newsletter("demo@example.com")["message"]

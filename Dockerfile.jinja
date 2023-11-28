@@ -1,0 +1,27 @@
+# build stage
+FROM python:3.11 AS builder
+
+# install PDM
+RUN pip install -U pip setuptools wheel
+RUN pip install pdm
+
+# copy files
+COPY pyproject.toml pdm.lock /project/
+COPY src/ /project/src
+
+# install dependencies and project into the local packages directory
+WORKDIR /project
+RUN pdm sync --prod --no-editable
+
+
+# run stage
+FROM python:3.11-slim
+
+ENV PROJECT_ENTRYPOINT={{project_name}}:actions
+
+WORKDIR /project
+
+# retrieve packages from build stage
+COPY --from=builder /project/.venv /project/.venv
+
+ENTRYPOINT ./.venv/bin/python -m missioncontrolbot.cli $PROJECT_ENTRYPOINT
