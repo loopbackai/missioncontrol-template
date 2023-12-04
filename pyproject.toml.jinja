@@ -6,7 +6,7 @@ authors = [
     {name = "{{author_name}}", email = "{{author_email}}"},
 ]
 dependencies = [
-   "missioncontrolbot"
+   "launchkit"
 ]
 requires-python = ">=3.11"
 readme = "README.md"
@@ -18,8 +18,11 @@ dev = [
 ]
 
 [tool.pdm.scripts]
-start.cmd = "python -m missioncontrolbot.cli {{project_name}}:actions"
+start.cmd = "launchkit {{project_name}}:actions"
 start.env_file = ".env"
+
+dev.cmd = "launchkit {{project_name}}:actions"
+dev.env_file = ".env"
 
 test.cmd = "pytest"
 test.env_file = ".env"

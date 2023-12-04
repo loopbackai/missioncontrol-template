@@ -1,5 +1,5 @@
 import asyncio
-from missioncontrolbot import MissionControl
+from launchkit import LaunchKit
 
 
 def add_user_to_newsletter(email: str):
@@ -19,4 +19,4 @@ async def launch_rocket():
     return {"message": "Rocket launched!"}
 
 
-actions = MissionControl([launch_rocket, add_user_to_newsletter])
+actions = LaunchKit([launch_rocket, add_user_to_newsletter])
